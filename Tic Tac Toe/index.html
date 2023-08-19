@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p>CURRENT PLAYER: <span id="player"></span></p>
+    <h1 style="text-align: center;">TIC TAC TOE</h1>
+    <div>
+
+        <table border="1">
+            <tr>
+                <td id="k0" onclick="choose(0)"></td>
+                <td id="k1" onclick="choose(1)"></td>
+                <td id="k2" onclick="choose(2)"></td>
+            </tr>
+            <tr>
+                <td id="k3" onclick="choose(3)"></td>
+                <td id="k4" onclick="choose(4)"></td>
+                <td id="k5" onclick="choose(5)"></td>
+            </tr>
+            <tr>
+                <td id="k6" onclick="choose(6)"></td>
+                <td id="k7" onclick="choose(7)"></td>
+                <td id="k8" onclick="choose(8)"></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var player = 0
+        var player_name = ['X','O']
+        var play=0
+        var arr= ['','','','','','','','','',]
+        function choose(box){
+            
+            console.log('choose'+box)
+            elem = document.getElementById('k'+box)
+            if(elem.textContent != ""){
+                alert('already filled')
+                return
+            }
+            if(player == 0){
+                elem.textContent = 'X'
+                player = 1
+                arr[box]='X'
+                play=play+1
+                
+            }else{
+                elem.textContent = 'O'
+                player = 0
+                arr[box]='O'
+                play=play+1
+            }
+            var wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
+            for (let x of wins){
+                    if((arr[x[0]]=='X')&&(arr[x[1]]=='X')&&(arr[x[2]]=='X')){
+                        alert('Player 1 Winner')
+                        var ulg=confirm('Mulai Permainan Baru?')
+                    }
+                    if((arr[x[0]]=='O')&&(arr[x[1]]=='O')&&(arr[x[2]]=='O')){
+                        alert('Player 2 Winner') 
+                        var ulg=confirm('Mulai Permainan Baru?')
+                    }
+                }
+                if(play==9){
+                    alert('Draw')
+                    var ulg=confirm('Mulai Permainan Baru?')
+                }
+                if(ulg==true){
+                    location.reload();
+                }
+            
+            document.getElementById('player').textContent = player_name[player] 
+
+
+        }
+    </script>
+</body>
+</html>

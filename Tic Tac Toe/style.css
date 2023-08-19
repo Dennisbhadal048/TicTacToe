@@ -1,0 +1,13 @@
+div{
+    margin: auto;
+    text-align: center;
+}
+table{
+    margin: auto;
+    text-align: center;
+}
+
+td{
+    height: 100px;
+    width: 100px;
+}
